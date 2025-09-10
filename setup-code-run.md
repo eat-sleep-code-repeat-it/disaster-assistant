@@ -14,7 +14,10 @@ pip install openai
 pip install faiss-cpu
 pip install python-dotenv
 
-disaster_assistant.py
+python disaster_assistant.py
+
+venv\scripts\python.exe -m pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
 ### First step
