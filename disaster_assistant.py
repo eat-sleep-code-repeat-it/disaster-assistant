@@ -5,17 +5,19 @@ from dotenv import load_dotenv
 import faiss
 import numpy as np
 import openai
-load_dotenv(override=True)
+import gradio as gr
+from typing import List, Optional, Tuple
+from pydantic import BaseModel, Field, ValidationError, field_validator
+from datetime import date
 
+load_dotenv(override=True)
 openai_api_key = os.getenv('OPENAI_API_KEY')
 if openai_api_key:
     print(f"OpenAI API Key exists and begins {openai_api_key[:8]}")
 else:
     print("OpenAI API Key not set - please head to the troubleshooting guide in the setup folder")
 
-from typing import List, Optional, Tuple
-from pydantic import BaseModel, Field, ValidationError, field_validator
-from datetime import date
+
 class DisasterDeclaration(BaseModel):
     """
     Use this model when working with individual disaster declaration.
@@ -143,7 +145,14 @@ def test_setup(question: str):
         model="gpt-4.1-mini",
         messages=messages
     )
-    print(response.choices[0].message.content) 
+    print(response.choices[0].message.content)
+    return response.choices[0].message.content
+def chat_rag_fn(user_message: str, chat_history: list) -> Tuple[str, list]:
+    answer = test_setup(user_message)
+    response = (
+        f"🧠 **Answer:** {answer}\n\n"
+    )
+    return response
 #######################################################
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -158,8 +167,12 @@ def main():
         index, indexed_declarations = build_faiss_index(disaster_declarations)
         save_index_and_metadata(index, indexed_declarations, index_file, index_metadata_file)
     
-    question = "What is 2+2?"
-    test_setup(question)
+    # 🚀 Chat Interface with history
+    gr.ChatInterface(
+        fn=chat_rag_fn,
+        title="🌀 Disaster AI Assistant",
+        description="Ask about FEMA disasters by state/county or general questions. Data powered by FEMA + FAISS + OpenAI."
+    ).launch()
 
 #######################################################
 #
