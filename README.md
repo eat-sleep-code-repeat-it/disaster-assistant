@@ -8,7 +8,7 @@ Create a practical, functional software application that leverages one or more A
 
 ## Key Deliverables:
 - Fully functional AI-powered software application
-- Professionally documented GitHub or BitBucket repository
+- Professionally documented GitHub repository
 - Short demonstration video (up to 3 minutes) clearly explaining your application’s purpose, AI features, and unique aspects
 
 ## Directions
@@ -41,21 +41,23 @@ Step by Step Directions:
 6. Submit
 - Submit your links through the [MBA Center](https://my.sectionai.com/mini-mbas) under Week 7 - Project Week.
 
-## Build a Python agentic AI app 
-Pull FEMA disaster declaration data csv from FEMA website
-Converts each disaster declaration to an embedding vector using OpenAI embeddings
-Stores embeddings in a vector store for fast similarity search 
-When a user inputs a state + county (or a freeform question), the app:
-- Creates an embedding for the query.
-- Searches the vector store for the most relevant disaster declarations.
-- Feeds those relevant results as context to OpenAI to generate a response.
-- Guardrails: Refuse to answer if results are empty.
-- Evaluation: Use GPT-4 as a judge to rate:
-   - Relevance
-   - Accuracy
+## Build a Python agentic AI app called `DisasterAssistant`
+- Pull FEMA disaster declaration data csv from FEMA website
+- Converts each disaster declaration to an embedding vector using OpenAI embeddings
+- Stores embeddings in a vector store for fast similarity search 
+- When a user inputs a state + county (or a freeform question), the app:
+    - Creates an embedding for the query.
+    - Searches the vector store for the most relevant disaster declarations.
+    - Feeds those relevant results as context to OpenAI to generate a response.
+    - Guardrails: Refuse to answer if results are empty.
+    - Evaluation: Use GPT-4 as a judge to rate:
+    - Relevance
+    - Accuracy
 - Previous messages are preserved in context
 - Use gradio to build UI (like ChatGPT)
     - display question asked by a user
     - display response
     - display guardrail info
     - display evaluation info
+## setup, coding, run
+[step by step](setup-code-run.md)
