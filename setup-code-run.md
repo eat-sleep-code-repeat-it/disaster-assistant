@@ -1,4 +1,4 @@
-#  Disaster Assistant
+#  AI-powered Disaster Assistant
 
 Ask Anything About U.S. FEMA Disaster Declarations.
 
@@ -17,6 +17,18 @@ pip install python-dotenv
 disaster_assistant.py
 ```
 
+### First step
+- test venv and openai setup: test_setup
+- download csv
+    - for demo, we use a small subset of the originial csv to reduce API usage
+- read declarations as structured date model from csv
+- create index
+    - for each structured disaster declaration, create embeddings using OpenAI Embeddings API.
+    - Creates and populates a FAISS vector index from disaster declaration embeddings
+- Store FAISS index and embeddings to disk
+- Reload FAISS index and embeddings 
+    - to avoid recomputing embeddings
+    - to save a ton of time and API usage
 ## Sample Prompts
 
 ## Future
