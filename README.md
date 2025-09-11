@@ -1,5 +1,5 @@
 
-#  Disaster Assistant
+#  Disaster AI Assistant
 
 This is a final project for [<b>Springboard AI for Programmers Mini-MBA (On-Demand)</b>](https://my.sectionai.com/mini-mbas/e7306541-f1d2-4920-b40a-8233e628f2f1).
 
@@ -51,8 +51,9 @@ Step by Step Directions:
     - Feeds those relevant results as context to OpenAI to generate a response.
     - Guardrails: Refuse to answer if results are empty.
     - Evaluation: Use GPT-4 as a judge to rate:
-    - Relevance
-    - Accuracy
+        - Relevance
+        - Accuracy
+        - Completeness
 - Previous messages are preserved in context
 - Use gradio to build UI (like ChatGPT)
     - display question asked by a user
