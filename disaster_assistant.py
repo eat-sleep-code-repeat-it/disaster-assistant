@@ -8,7 +8,7 @@ import openai
 import gradio as gr
 from typing import List, Optional, Tuple
 from pydantic import BaseModel, Field, ValidationError, field_validator
-from datetime import date
+from datetime import date, datetime
 
 load_dotenv(override=True)
 openai_api_key = os.getenv('OPENAI_API_KEY')
@@ -147,14 +147,64 @@ def test_setup(question: str):
     )
     print(response.choices[0].message.content)
     return response.choices[0].message.content
+
+#######################################################
+def search_similar_declarations(
+    query: str,
+    index: faiss.IndexFlatL2,
+    declarations: List[DisasterDeclaration],
+    top_k=5
+) -> List[Tuple[DisasterDeclaration, float]]:
+    query_emb = np.array([get_embedding(query)]).astype('float32')
+    distances, indices = index.search(query_emb, top_k)
+    results = []
+    for idx, dist in zip(indices[0], distances[0]):
+        if idx != -1:
+            decl = declarations[idx]
+            results.append((decl, dist))
+    return results
+
+#######################################################
+def generate_openai_answer(query: str, results: List[Tuple[DisasterDeclaration, float]]) -> str:
+    if not results:
+        return f"Sorry, I found no disaster declarations related to your query: '{query}'."
+
+    context_text = "\n".join(create_text_for_embedding(decl, score) for decl, score in results) 
+
+    prompt = (
+        f"You are a helpful assistant. Using the disaster declarations below, answer the question:\n"
+        f"Query: {query}\n\n"
+        f"Disaster Declarations:\n{context_text}\n\n"
+        f"Answer:"
+    )
+
+    response = openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": (
+                "You are a helpful assistant. Only answer questions using the disaster declaration data provided. "
+                "If the data does not contain an answer, say 'No relevant disaster declarations found.' "
+                "Do not guess or fabricate information. Format the answer clearly."
+            )},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=500,
+        temperature=0,
+    )
+    return response.choices[0].message.content.strip()
+
+#######################################################
 def chat_rag_fn(user_message: str, chat_history: list) -> Tuple[str, list]:
-    answer = test_setup(user_message)
+    results = search_similar_declarations(user_message, index, indexed_declarations, top_k=5)
+    answer = generate_openai_answer(user_message, results)
     response = (
         f"🧠 **Answer:** {answer}\n\n"
     )
     return response
+
 #######################################################
 def main():
+    global index, indexed_declarations
     script_dir = os.path.dirname(os.path.abspath(__file__))
     csv_file = os.path.join(script_dir, "data", "disaster_declarations.csv")
     disaster_declarations = read_disaster_declarations_from_csv(csv_file) 
