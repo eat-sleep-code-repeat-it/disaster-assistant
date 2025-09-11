@@ -194,11 +194,67 @@ def generate_openai_answer(query: str, results: List[Tuple[DisasterDeclaration, 
     return response.choices[0].message.content.strip()
 
 #######################################################
+def validate_answer(answer: str, required_keywords: List[str]) -> bool:
+    """
+    Guardrail:    Blocks short or irrelevant answers that don't mention keywords from the query
+    """
+    if len(answer.strip()) < 10:
+        return False
+    for keyword in required_keywords:
+        if keyword.lower() not in answer.lower():
+            return False
+    return True
+
+#######################################################
+def evaluate_with_gpt_judge(query: str, context: str, answer: str) -> str:
+    eval_prompt = f"""
+    You are evaluating an AI assistant's disaster response.
+
+    User Query: {query}
+
+    Retrieved Context:
+    {context}
+
+    AI Answer:
+    {answer}
+
+    Evaluate on:
+    - Relevance (1-5)
+    - Accuracy (1-5)
+    - Completeness (1-5)
+
+    Return your scores and one comment as JSON like:
+    {{"relevance": 4, "accuracy": 4, "completeness": 5, "comments": "Accurate and complete."}}
+    """
+    judge_response = openai.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "user", "content": eval_prompt}
+        ],
+        temperature=0
+    )
+    return judge_response.choices[0].message.content.strip()
+
+#######################################################
 def chat_rag_fn(user_message: str, chat_history: list) -> Tuple[str, list]:
     results = search_similar_declarations(user_message, index, indexed_declarations, top_k=5)
     answer = generate_openai_answer(user_message, results)
+
+    if not validate_answer(answer, [user_message.split()[0]]):
+        response = "⚠️ Guardrail Triggered: Answer may be incomplete or irrelevant."
+        return response
+    
+    context = "\n".join(create_text_for_embedding(d) for d, _ in results)
+    evaluation = evaluate_with_gpt_judge(user_message, context, answer)
+
+    match_summary = "\n".join(
+        f"- Disaster {decl.disasterNumber} ({decl.state}, {decl.designatedArea}, {decl.incidentBeginDate}, {decl.incidentEndDate}): Score {round(score, 4)}"
+        for decl, score in results
+    )
     response = (
+        f"**Top Matches:**\n{match_summary}\n\n"
         f"🧠 **Answer:** {answer}\n\n"
+        f"📊 **Evaluation:**\n{evaluation}"
     )
     return response
 

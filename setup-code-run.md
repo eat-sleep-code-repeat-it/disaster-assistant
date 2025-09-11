@@ -42,11 +42,11 @@ pip install -r requirements.txt
     - pass context to openai
 - generate openai answer
 
-### Fourth step - TODO
-- Guardrail Evaluation
-- Active disaster filtering
-- Active disaster filtering
-
+### Fourth step - Completed
+- Evaluate answer using GPT as judge from aspect of relevance, accuracy,completeness
+- Guardrail to validate answer
+    - Blocks short or irrelevant answers that don't mention keywords from the query
+- Include top match records
 ## Sample Prompts
 ```js
 is there an active disaster in Washington County, Oregon? 
