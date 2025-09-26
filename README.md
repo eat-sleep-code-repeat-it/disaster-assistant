@@ -4,12 +4,12 @@ This is a final project for **[Springboard AI for Programmers Mini-MBA (On-Deman
 
 I have built an application called **DAGENT** — short for *Disaster Agent* — an AI-powered assistant that helps answer questions about **FEMA disaster declarations**.
 
-You can see detail [implementation steps](DAGENT-implementation.md).
+You can see detail [implementation steps](/docs/DAGENT-implementation.md).
 
 ## Demo
 
 - You can watch my [Demo Video](abc).
-- You can listen my [presentation Audio](DAGENT-presentation.mp3).
+- You can listen my [presentation Audio](/docs/DAGENT-presentation.mp3).
 
 
 ## How to run by yourself
