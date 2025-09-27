@@ -1,20 +1,38 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=65.5.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "DAGENT"
+name = "disaster-assistant"
 version = "0.1.0"
-description = "AI-powered Disaster Assistant"
-authors = [
-    { name="Rolland Luo", email="rolland.2016@outlook.com" }
-]
+description = "DAGENT — AI-powered Disaster Assistant (FEMA declarations + FAISS + OpenAI + Gradio)"
 readme = "README.md"
-requires-python = "==3.12.7"
+requires-python = ">=3.12.10,<4"
+authors = [
+    { name = "Rolland Luo", email = "rolland.2016@outlook.com" }
+]
+license = { text = "MIT" }
 
 dependencies = [
-    "gradio",
-    "openai",
-    "faiss-cpu",
-    "python-dotenv"
+    "gradio>=3.29.0",
+    "openai>=1.0.0",
+    "faiss-cpu>=1.7.4",
+    "python-dotenv>=1.0.0",
+    "numpy>=1.25.0",
+    "pydantic>=2.2.0",
+    "httpx>=0.24.0",
+    "urllib3>=2.0.0"
 ]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff",
+    "black"
+]
+
+[tool.setuptools]
+packages = { find = {} }
+
+[project.scripts]
+dagent = "app.cli:main"

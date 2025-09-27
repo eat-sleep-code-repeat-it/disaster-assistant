@@ -4,7 +4,7 @@ This is a final project for **[Springboard AI for Programmers Mini-MBA (On-Deman
 
 I have built an application called **DAGENT** — short for *Disaster Agent* — an AI-powered assistant that helps answer questions about **FEMA disaster declarations**.
 
-You can see detail [implementation steps](/docs/DAGENT-implementation.md).
+You can see detailed [implementation steps](docs/DAGENT-implementation.md).
 
 ## Demo
 
@@ -12,45 +12,41 @@ You can see detail [implementation steps](/docs/DAGENT-implementation.md).
 - You can listen my [presentation Audio](DAGENT-presentation.mp3).
 
 
-## Setup & Run
+## Quick start (copy-paste)
 
-I have included a small size of the original dataset for demo purpose to reduce openai token usage. The original FEMA dataset is a large file containing all disaster declarations since they are recorded. 
+If you want a very short start, run the appropriate snippet below. See [`how-to-run-linux.md`](docs//how-to-run-linux.md) or [`how-to-run-windows.md`](docs/how-to-run-windows.md) for full, platform-specific instructions.
 
-- requires `Python 3.12.7`
-- clone this repo (assuming you are in `c:/workspace` directory on windows)
-- navigate to the application `cd c:/workspace/disaster-assistant`
-- rename `.env.example` to `.env`
-- open `.env` and replace `<your_openai_api_key_here>` with your openai key
-- run the following command
+Linux / macOS (bash):
 
 ```bash
-# requires Python 3.12.7
-
-# On macOS/Linux
-python3 -m venv .venv
-source .venv/bin/activate 
-
-# On Windows
-python -m venv .venv
-.venv\Scripts\activate
-
-# install packages
-pip install -r requirements.txt
-
-# run DEAGENT with SSL on
-python -m app.main
-
-# if you have SSL issue, run this istead to skip SSL
-python -m app.main --no-verify-ssl
-
+git clone <repository-url> disaster-assistant
+cd disaster-assistant
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt && pip install -e .
+cp .env.example .env   # then edit .env and set OPENAI_API_KEY
+dagent
 ```
 
-- Sample Prompts
+Windows (PowerShell):
+
+```powershell
+git clone <repository-url> disaster-assistant
+cd disaster-assistant
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+copy .env.example .env  # edit .env to set OPENAI_API_KEY
+dagent
+```
+
+## Sample prompts
+
+Try these prompts in the Gradio chat to explore the dataset and RAG behavior:
+
 ```js
-is there an active disaster in Washington County, Oregon? 
-is there an disaster in Riverside, California? 
-is there an active disaster in Riverside, California?
-active fire disasters? 
+is there an active disaster in Washington County, Oregon?
+is there a disaster in Riverside, California?
+active fire disasters?
 give all fire disasters?
 ```
 
@@ -87,6 +83,9 @@ disaster-assistant/
 ├── disaster_assistant_deprecated.py    # deprecated old single script version
 ├── .gitignore
 ├── README.md
+├── docs
+│   └── how-to-run-linux.md       # 🔹 Linux/macOS run instructions
+│   └── how-to-run-windows.md     # 🔹 Windows run instructions
 ├── requirements.txt
 
 app/main.py	            Launches the Gradio UI (e.g., gr.ChatInterface)
