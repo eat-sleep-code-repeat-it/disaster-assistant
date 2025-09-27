@@ -12,20 +12,16 @@ You can see detail [implementation steps](/docs/DAGENT-implementation.md).
 - You can listen my [presentation Audio](DAGENT-presentation.mp3).
 
 
-## How to run by yourself
+## Setup & Run
 
 I have included a small size of the original dataset for demo purpose to reduce openai token usage. The original FEMA dataset is a large file containing all disaster declarations since they are recorded. 
 
-The instructions are mainly writen for windows users since I only one windows laptop. You may follow the following instructions to run by yourself. 
- 
 - requires `Python 3.12.7`
 - clone this repo (assuming you are in `c:/workspace` directory on windows)
 - navigate to the application `cd c:/workspace/disaster-assistant`
 - rename `.env.example` to `.env`
 - open `.env` and replace `<your_openai_api_key_here>` with your openai key
 - run the following command
-
-
 
 ```bash
 # requires Python 3.12.7
