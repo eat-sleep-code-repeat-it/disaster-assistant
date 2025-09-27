@@ -43,7 +43,7 @@ def main(verify_ssl=True):
     logging.info("Launch Gradio Chat Interface with history ...")
     gr.ChatInterface(
         fn=chat_rag_fn,
-        title="🌀 Disaster AI Assistant",
+        title="🌀 DAGENT - AI-powered Disaster Assistant",
         description="Ask about FEMA disasters by state/county or general questions. Data powered by FEMA + FAISS + OpenAI."
     ).launch()
 

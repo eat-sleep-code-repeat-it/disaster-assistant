@@ -4,7 +4,7 @@ Ask Anything About U.S. FEMA Disaster Declarations.
 
 ## Coding
 ```bash
-# requires Python 3.13.7
+# requires Python 3.12.7
 
 python -m venv venv
 venv\Scripts\activate 
