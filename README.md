@@ -18,7 +18,7 @@ I have included a small size of the original dataset for demo purpose to reduce 
 
 The instructions are mainly writen for windows users since I only one windows laptop. You may follow the following instructions to run by yourself. 
  
-- requires `Python 3.13.7`
+- requires `Python 3.12.7`
 - clone this repo (assuming you are in `c:/workspace` directory on windows)
 - navigate to the application `cd c:/workspace/disaster-assistant`
 - rename `.env.example` to `.env`
@@ -28,7 +28,7 @@ The instructions are mainly writen for windows users since I only one windows la
 
 
 ```bash
-# requires Python 3.13.7
+# requires Python 3.12.7
 
 # On macOS/Linux
 python3 -m venv .venv
@@ -36,7 +36,7 @@ source .venv/bin/activate
 
 # On Windows
 python -m venv .venv
-venv\Scripts\activate
+.venv\Scripts\activate
 
 # install packages
 pip install -r requirements.txt
