@@ -7,7 +7,7 @@ This page contains Windows-specific instructions for running DAGENT using PowerS
 1. Clone and enter the repo:
 
 ```powershell
-git clone <repository-url> disaster-assistant
+git clone https://github.com/eat-sleep-code-repeat-it/disaster-assistant.git
 cd disaster-assistant
 ```
 
@@ -36,8 +36,6 @@ copy .env.example .env
 5. Run the app:
 
 ```powershell
-dagent
-# or
 python -m app.main
 python -m app.main --no-verify-ssl
 ```

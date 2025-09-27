@@ -3,11 +3,11 @@ requires = ["setuptools>=65.5.1", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "disaster-assistant"
+name = "DAGENT"
 version = "0.1.0"
-description = "DAGENT — AI-powered Disaster Assistant (FEMA declarations + FAISS + OpenAI + Gradio)"
+description = "DAGENT — AI-powered Disaster Assistant"
 readme = "README.md"
-requires-python = ">=3.12.10,<4"
+requires-python = ">=3.12,<4"
 authors = [
     { name = "Rolland Luo", email = "rolland.2016@outlook.com" }
 ]
@@ -33,6 +33,3 @@ dev = [
 
 [tool.setuptools]
 packages = { find = {} }
-
-[project.scripts]
-dagent = "app.cli:main"

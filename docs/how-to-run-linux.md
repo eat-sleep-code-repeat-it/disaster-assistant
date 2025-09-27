@@ -21,7 +21,7 @@ pip install -e .
 1. Clone the repo and enter it:
 
 ```bash
-git clone <repository-url> disaster-assistant
+git clone https://github.com/eat-sleep-code-repeat-it/disaster-assistant.git
 cd disaster-assistant
 ```
 
@@ -51,8 +51,6 @@ cp .env.example .env
 5. Run the app:
 
 ```bash
-dagent
-# or, if you prefer running the module directly:
 python -m app.main
 ```
 
