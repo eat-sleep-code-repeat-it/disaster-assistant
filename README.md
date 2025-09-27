@@ -4,6 +4,25 @@ This is a final project for **[Springboard AI for Programmers Mini-MBA (On-Deman
 
 I have built an application called **DAGENT** — short for *Disaster Agent* — an AI-powered assistant that helps answer questions about **FEMA disaster declarations**.
 
+
+## 🧠 Key AI Features
+
+The application demonstrates several important AI capabilities covered in the course:
+
+- **Prompt Engineering** – to guide how the assistant interprets and responds to user queries  
+- **OpenAI Embeddings** – to convert disaster records and user questions into semantic vectors  
+- **Vector Databases** – for fast and accurate similarity search  
+- **Retrieval-Augmented Generation (RAG)** – to inject relevant FEMA data into the model’s context  
+- **Guardrails** – to prevent the model from answering when no relevant data is found  
+- **AI-based Evaluation** – using openAI to assess each answer for:
+  - Relevance  
+  - Accuracy  
+  - Completeness  
+
+The user interface is built using **Gradio**, making it easy to interact with the assistant — just like using ChatGPT.
+
+---
+
 You can see detailed [implementation steps](docs/DAGENT-implementation.md).
 
 ## Demo
@@ -12,14 +31,14 @@ You can see detailed [implementation steps](docs/DAGENT-implementation.md).
 - You can listen my [presentation Audio](DAGENT-presentation.mp3).
 
 
-## Quick start (copy-paste)
+## Quick start
 
 If you want a very short start, run the appropriate snippet below. See [`how-to-run-linux.md`](docs//how-to-run-linux.md) or [`how-to-run-windows.md`](docs/how-to-run-windows.md) for full, platform-specific instructions.
 
 Linux / macOS (bash):
 
 ```bash
-git clone <repository-url> disaster-assistant
+git clone https://github.com/eat-sleep-code-repeat-it/disaster-assistant.git
 cd disaster-assistant
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt && pip install -e .
@@ -30,7 +49,7 @@ dagent
 Windows (PowerShell):
 
 ```powershell
-git clone <repository-url> disaster-assistant
+git clone https://github.com/eat-sleep-code-repeat-it/disaster-assistant.git
 cd disaster-assistant
 python -m venv .venv
 .venv\Scripts\Activate.ps1
