@@ -7,7 +7,8 @@ class DisasterDeclaration(BaseModel):
     Use this model when working with individual disaster declaration.
     """
     disasterNumber: int = Field(description="Sequentially assigned number used to designate an event or incident declared as a disaster")
-    declarationTitle: str =  Field(description="Title for the disaster	")
+    fyDeclared: int =  Field(description="Fiscal year in which the disaster was declared")
+    declarationTitle: str =  Field(description="Title for the disaster")
     state: str = Field(description="The name or phrase describing the U.S. state, district, or territory")
     designatedArea: str = Field(description="The name or phrase describing the geographic area that was included in the declaration")
     declarationType: str = Field(description="Two character code that defines if this is a major disaster, fire management, or emergency declaration")

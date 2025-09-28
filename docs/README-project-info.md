@@ -1,4 +1,4 @@
-# Disaster AI Assistant
+# DEAGENT - AI-powered Disaster Assistant
 
 This is a final project for **[Springboard AI for Programmers Mini-MBA (On-Demand)](https://my.sectionai.com/mini-mbas/e7306541-f1d2-4920-b40a-8233e628f2f1)**.
 
@@ -44,7 +44,7 @@ Create a functional application that integrates one or more AI features covered 
 6. Submit
    - Submit your links through the [MBA Center](https://my.sectionai.com/mini-mbas) under Week 7 - Project Week.
 
-## Build a Python agentic AI app called `DisasterAssistant`
+## Build a Python agentic AI app called `DAGENT`
 
 - Pull FEMA disaster declaration data csv from FEMA website
 - Convert each disaster declaration to an embedding vector using OpenAI embeddings
@@ -67,4 +67,5 @@ Create a functional application that integrates one or more AI features covered 
 
 ## Setup, Coding, Run
 
-See [step by step](setup-code-run.md)
+- [For linux] (docs/how-to-run-linux.md)
+- [For windows](docs/how-to-run-windows.md)

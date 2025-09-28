@@ -16,7 +16,8 @@ def read_disaster_declarations_from_csv(file_path: str) -> List[DisasterDeclarat
                 if 'disasterNumber' in row and row['disasterNumber']:
                     row['disasterNumber'] = int(row['disasterNumber'])
                 decl = DisasterDeclaration(**row)
-                declarations.append(decl)
+                if decl.fyDeclared >= 2024:
+                    declarations.append(decl)
             except ValidationError as e:
                 print(f"Skipping invalid row: {e}")
     print(f"Loaded {len(declarations)} disaster declarations from CSV")

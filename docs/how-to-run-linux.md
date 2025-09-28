@@ -57,7 +57,6 @@ python -m app.main
 Use `--no-verify-ssl` if you must disable SSL verification (not recommended):
 
 ```bash
-dagent --no-verify-ssl
 python -m app.main --no-verify-ssl
 ```
 

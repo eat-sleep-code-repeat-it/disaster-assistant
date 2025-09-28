@@ -23,7 +23,7 @@ def get_embeddings_batch(declarations: List[DisasterDeclaration], ai_client: Ope
     """
     texts = [create_text_for_embedding(decl) for decl in declarations]
     all_embeddings = []
-    batch_size = 10
+    batch_size = 100
     for i in range(0, len(texts), batch_size):
         batch = texts[i:i + batch_size]
         response = ai_client.client.embeddings.create(
@@ -37,14 +37,20 @@ def get_embeddings_batch(declarations: List[DisasterDeclaration], ai_client: Ope
 def create_text_for_embedding(declaration: DisasterDeclaration, score: Optional[float] = None) -> str:
     parts = [
         f"DisasterNumber: {declaration.disasterNumber}",
+        f"FiscalYearDeclared: {declaration.fyDeclared}",
         f"State: {declaration.state}",
+        f"fipsCountyCode: {declaration.fipsCountyCode or 'N/A'}",
+        f"fipsStateCode: {declaration.fipsStateCode or 'N/A'}",
         f"County: {declaration.designatedArea or 'N/A'}",
         f"DeclarationType: {declaration.declarationType or 'N/A'}",
         f"DeclarationDate: {declaration.declarationDate or 'N/A'}",
         f"declarationTitle: {declaration.declarationTitle or 'N/A'}",
         f"IncidentType: {declaration.incidentType or 'N/A'}",
         f"IncidentBeginDate: {declaration.incidentBeginDate or 'N/A'}",
-        f"IncidentEndDate: {declaration.incidentEndDate or 'N/A'}"
+        f"IncidentEndDate: {declaration.incidentEndDate or 'N/A'}",
+        f"IndividualHouseProgramDeclared: {'Yes' if declaration.ihProgramDeclared else 'No'}",
+        f"IndividualAssistanceProgramDeclared: {'Yes' if declaration.iaProgramDeclared else 'No'}",
+        f"PublicAssistanceProgramDeclared: {'Yes' if declaration.paProgramDeclared else 'No'}"
     ]
     if score is not None:
         parts.append(f"FAISS Score: {round(score, 3)}")
