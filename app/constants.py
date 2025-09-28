@@ -4,7 +4,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Data files
-DISASTER_CSV_PATH = os.path.join(BASE_DIR, "data", "disaster_declarations.csv")
+DISASTER_CSV_PATH = os.path.join(BASE_DIR, "data", "DisasterDeclarationsSummaries.csv")
 
 # Saved index paths
 FAISS_INDEX_PATH = os.path.join(BASE_DIR, "saved_index", "disaster_faiss.index")

@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=65.5.1", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "DAGENT"
+version = "0.1.0"
+description = "DAGENT — AI-powered Disaster Assistant"
+readme = "README.md"
+requires-python = ">=3.12,<4"
+authors = [
+    { name = "Rolland Luo", email = "rolland.2016@outlook.com" }
+]
+license = { text = "MIT" }
+
+dependencies = [
+    "gradio>=3.29.0",
+    "openai>=1.0.0",
+    "faiss-cpu>=1.7.4",
+    "python-dotenv>=1.0.0",
+    "numpy>=1.25.0",
+    "pydantic>=2.2.0",
+    "httpx>=0.24.0",
+    "urllib3>=2.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "ruff",
+    "black"
+]
+
+[tool.setuptools]
+packages = { find = {} }
