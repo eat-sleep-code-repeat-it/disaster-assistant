@@ -4,7 +4,16 @@
 Hi, I’m Rolland, and I’m excited to present my final project for the Springboard AI for Programmers Mini-MBA.
 
 I’ve built an application called DAGENT — short for Disaster Agent.
-It’s an AI-powered assistant that helps users quickly get answers about FEMA disaster declarations.
+
+## ✅ Purpose of the Application
+
+DAGENT is designed to help **mortgage companies** verify whether a property is located in a **FEMA-declared disaster area**.
+
+This verification is critical before offering disaster relief programs, especially for **government-backed loans**.
+
+Traditionally, this process involves manually reviewing FEMA’s public datasets — which is slow, repetitive, and error-prone.
+
+**DAGENT automates and simplifies this process** using natural language input and AI-powered search over FEMA disaster data.
 
 Let’s take a quick look at how I set it up.
 
@@ -44,17 +53,28 @@ Finally, I launched the application:
 python -m app.main
 ```
 
+Once it’s running, you can open ` http://127.0.0.1:7860/`in your browser.
+
+Here’s the interface — simple and clean.
+
+You can type in a natural language question, like:
+```js
+is there a disaster in Washington County, Oregon?
+is there a disaster in Riverside, California? 
+is there a disaster in California in fiscal year 2025?
+is there flood disaster in TX in fiscal year 2025
+
+do you know movies related to disaster?
+```
+
+And DAGENT will respond with structured information powered by AI.
+
+
+
+Thanks for watching my demo!
 ---
 
-## ✅ Purpose of the Application
 
-DAGENT is designed to help **mortgage companies and financial institutions** verify whether a property is located in a **FEMA-declared disaster area**.
-
-This verification is critical before offering disaster relief programs like **forbearance, deferrals, or loan modifications**, especially for **government-backed loans** like FHA, VA, USDA, Fannie Mae, and Freddie Mac.
-
-Traditionally, this process involves manually reviewing FEMA’s public datasets — which is slow, repetitive, and error-prone.
-
-**DAGENT automates and simplifies this process** using natural language input and AI-powered search over FEMA disaster data.
 
 ---
 
