@@ -14,7 +14,7 @@ Traditionally, this process involves manually reviewing FEMA’s public datasets
 
 **DAGENT automates and simplifies this process** using natural language input and AI-powered search over FEMA disaster data.
 
-Let’s take a quick look at how I set it up.
+Let’s take a quick look at how I set up, and run it, then show you the key features of the application.
 
 First, I cloned the project repository from GitHub into my local workspace:
 ```bash
