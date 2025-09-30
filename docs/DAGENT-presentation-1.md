@@ -9,8 +9,7 @@ I’ve built an application called DAGENT — short for Disaster Agent.
 
 DAGENT is designed to help **mortgage companies** verify whether a property is located in a **FEMA-declared disaster area**.
 
-This verification is critical before offering disaster relief programs, especially for **government-backed loans**.
-
+This verification is critical before offering disaster relief programs. 
 Traditionally, this process involves manually reviewing FEMA’s public datasets — which is slow, repetitive, and error-prone.
 
 **DAGENT automates and simplifies this process** using natural language input and AI-powered search over FEMA disaster data.
@@ -21,9 +20,6 @@ First, I cloned the project repository from GitHub into my local workspace:
 ```bash
 git clone https://github.com/eat-sleep-code-repeat-it/disaster-assistant.git
 ```
-
-This pulls down all the source code into a folder called disaster-assistant.
-
 Then I navigated into the project directory:
 ```bash
 cd disaster-assistant
@@ -82,12 +78,12 @@ Thanks for watching my demo!
 
 The application demonstrates several important AI capabilities covered in the course:
 
-- **Prompt Engineering** – to guide how the assistant interprets and responds to user queries  
-- **OpenAI Embeddings** – to convert disaster records and user questions into semantic vectors  
-- **Vector Databases** – for fast and accurate similarity search  
-- **Retrieval-Augmented Generation (RAG)** – to inject relevant FEMA data into the model’s context  
-- **Guardrails** – to prevent the model from answering when no relevant data is found  
-- **AI-based Evaluation** – using openAI to assess each answer for:
+1. **Prompt Engineering** – to guide how the assistant interprets and responds to user queries  
+2. **OpenAI Embeddings** – to convert disaster records and user questions into semantic vectors  
+3. **Vector Databases** – for fast and accurate similarity search  
+4. **Retrieval-Augmented Generation (RAG)** – to inject relevant FEMA data into the model’s context  
+5. **Guardrails** – to prevent the model from answering when no relevant data is found  
+6. **AI-based Evaluation** – using openAI to assess each answer for:
   - Relevance  
   - Accuracy  
   - Completeness  
