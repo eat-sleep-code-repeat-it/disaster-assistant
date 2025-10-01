@@ -1,4 +1,4 @@
-# DEAGENT - AI-powered Disaster Assistant
+# DAGENT - AI-powered Disaster Assistant
 
 Ask Anything About U.S. FEMA Disaster Declarations.
 

@@ -1,4 +1,4 @@
-# DEAGENT - AI-powered Disaster Assistant
+# DAGENT - AI-powered Disaster Assistant
 
 This is a final project for **[Springboard AI for Programmers Mini-MBA (On-Demand)](https://my.sectionai.com/mini-mbas/e7306541-f1d2-4920-b40a-8233e628f2f1)**.
 
