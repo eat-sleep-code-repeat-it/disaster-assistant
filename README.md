@@ -27,7 +27,7 @@ You can see detailed [implementation steps](docs/DAGENT-implementation.md).
 
 ## Demo
 
-- You can watch my [Demo Video](abc).
+- You can watch my [Demo Video](dagent-demo-video.mp4).
 - You can listen my [presentation Audio](DAGENT-presentation.mp3).
 
 
@@ -72,7 +72,7 @@ give all fire disasters?
 ## Project Structure
 - Keep Gradio app logic clean and isolated
 - Separate data/model logic from UI
-- Make it easier to maintain, extend, or even deploy later (e.g., with FastAPI)
+- Make it easier to maintain, extend, or even deploy later
 
 ```bash
 disaster-assistant/
